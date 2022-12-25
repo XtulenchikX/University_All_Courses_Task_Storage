@@ -17,8 +17,11 @@ def main():
       list.append(op)
   print('Массив: ', list)
   n = int(input('Введите количество чисел в произведении: '))
-  result = n_min(list, n)
-  print('Минимальное произведение', n, 'элементов массива =', result)
+  if n > len(list):
+    print('Ошибка: Не можем взять чисел больше, чем их есть в массиве!!!')
+  else:
+    result = n_min(list, n)
+    print('Минимальное произведение', n, 'элементов массива =', result)
 
 
 if __name__ == '__main__':
