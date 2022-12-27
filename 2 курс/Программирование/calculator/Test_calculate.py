@@ -1,8 +1,10 @@
 from main import calculate
 import unittest
+from main import read_params
 
 
 class TestCalculate(unittest.TestCase):
+  read_params()
 
   def test_sum(self):
     self.assertEqual(calculate(758, 247, '+'), 1005)
