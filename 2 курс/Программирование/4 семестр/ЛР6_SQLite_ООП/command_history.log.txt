@@ -1,0 +1,30 @@
+INSERT INTO user (name, height, created) VALUES  ('Petr', 1.6, '2023-03-04 12:15:20'), ('Ivan', 1.7, '2023-05-04 13:20:41'), ('Maks', 1.9, '2023-10-04 19:18:54'), ('Mark', 1.8, '2023-10-04 19:24:54'), ('Vlad', 1.85, '2023-10-04 19:14:54'); [12-05-2023 11:34:06] 
+ 
+DELETE FROM user WHERE height > 1.8; [12-05-2023 11:34:06] 
+ 
+DELETE FROM user WHERE height < 1.7; [12-05-2023 11:34:06] 
+ 
+SELECT * FROM user; [12-05-2023 11:34:06] 
+ 
+INSERT INTO user (name, height, created) VALUES  ('Petr', 1.6, '2023-03-04 12:15:20'), ('Ivan', 1.7, '2023-05-04 13:20:41'), ('Maks', 1.9, '2023-10-04 19:18:54'), ('Mark', 1.8, '2023-10-04 19:24:54'), ('Vlad', 1.85, '2023-10-04 19:14:54'); [13-05-2023 11:19:33] 
+ 
+SELECT * FROM user; [13-05-2023 11:19:33] 
+ 
+DELETE FROM user WHERE id <> 0; [13-05-2023 11:19:56] 
+ 
+SELECT * FROM user; [13-05-2023 11:19:56] 
+ 
+INSERT INTO user (name, height, created) VALUES  ('Petr', 1.6, '2023-03-04 12:15:20'), ('Ivan', 1.7, '2023-05-04 13:20:41'), ('Maks', 1.9, '2023-10-04 19:18:54'), ('Mark', 1.8, '2023-10-04 19:24:54'), ('Vlad', 1.85, '2023-10-04 19:14:54'); [13-05-2023 11:20:10] 
+ 
+SELECT * FROM user; [13-05-2023 11:20:10] 
+ 
+SELECT * FROM user; [13-05-2023 12:09:06] 
+ 
+INSERT INTO user (name, height, created) VALUES  ('TestUser', 1.9, '2023-03-04 12:15:20'); [13-05-2023 12:09:59] 
+ 
+SELECT * FROM user; [13-05-2023 12:09:59] 
+ 
+INSERT INTO user (name, height, created) VALUES  ('NiceName', 1.9, '2023-05-04 12:15:20'); [13-05-2023 12:11:15] 
+ 
+SELECT * FROM user; [13-05-2023 12:11:15] 
+ 
