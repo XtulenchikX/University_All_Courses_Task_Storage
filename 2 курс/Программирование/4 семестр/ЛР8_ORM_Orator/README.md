@@ -67,7 +67,7 @@ User.update_by_name(option, name, name_new, height)
 ```python
 User.delete_by_id(id_1, id_2, id_3, ...)
 ```
-- *delete_by_names*
+- *delete_by_names*  
 Получает на вход option (знак сравнения '=' или '<>') и некоторое количество имён (name_1, name_2, ...), а затем, в зависимости от option, либо удаляет все записи с введёнными именами, либо удаляет все записи, кроме записей с введёнными именами.
 #### Вызов
 ```python
