@@ -38,7 +38,7 @@ _Автор работы: Стецук Максим 2гр.1п.гр._
 
 ## Реализация в Workbench
 
-EER-диаграмма:
+EER-диаграмма:  
 ![Alt text](Scheme_LR7.png)
 Запрос создания находится в файле: [create_req.sql](create_req.sql)  
 Запрос наполнения находится в файле: [insert_req.sql](insert_req.sql)
