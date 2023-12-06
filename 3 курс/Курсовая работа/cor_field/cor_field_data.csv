@@ -1,0 +1,8 @@
+Измерения,ChatGPT,CodeGPT,BLOOM,Whisper,DALL-E 2,Craiyon,Stable Diffusion,Imagen,Make-A-Video,GitHub Copilot
+Ранг IT,1,2,8,6,9,5,4,7,10,3
+Ранг Med,1,7,3,5,4,9,6,2,10,8
+d^2,0,25,25,1,25,16,4,25,0,25
+n,10
+rs,0.115
+t,0.328
+t_crit,2.306
