@@ -29,7 +29,8 @@ obj2.get_one_currenc()
 new_print(obj.show_cur_save())
 
 # Демонстрация ограничения количества запросов в секунду
-print()
+print('\n_______')
+print("Проверка на ограничение количества запросов в секунду:\n")
 obj.get_currencies()
 obj1.get_currencies()
 time.sleep(1)
