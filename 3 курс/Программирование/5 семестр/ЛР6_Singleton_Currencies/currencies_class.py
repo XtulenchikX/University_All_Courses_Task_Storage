@@ -12,30 +12,36 @@ class Current_currencies:
     self.all_cur = all_cur
     self.one_cur = one_cur
     self.cur_save = []
+    self.last_call_time = 0
 
   def get_currencies(self):
-    import requests
-    from xml.etree import ElementTree as ET
-
-    cur_res_str = requests.get('http://www.cbr.ru/scripts/XML_daily.asp')
-    result = []
-
-    root = ET.fromstring(cur_res_str.content)
-    valutes = root.findall(
-      "Valute"
-    ) 
-    for _v in valutes:
-      valute_id = _v.get('ID')
-      valute = {}
-      valute_cur_name, valute_val = _v.find('Name').text, _v.find(
-          'Value').text
-      valute_charcode = _v.find('CharCode').text
-      valute_val_lst = valute_val.split(',')
-      valute_cur_val = (valute_val_lst[0], valute_val_lst[1])
-      valute[valute_charcode] = (valute_cur_name, valute_cur_val)
-      result.append(valute)
-
-    self.all_cur = result
+    import time
+    delta_time = time.time() - self.last_call_time
+    if delta_time < 1:
+        print("Запрос не выполнен, время между запросами меньше 1 секунды! \nВозвращены результаты прошлого запроса\n")
+        self.all_cur = self.all_cur
+    else:
+      import requests
+      from xml.etree import ElementTree as ET
+      cur_res_str = requests.get('http://www.cbr.ru/scripts/XML_daily.asp')
+      result = []
+      root = ET.fromstring(cur_res_str.content)
+      valutes = root.findall(
+        "Valute"
+      ) 
+      for _v in valutes:
+        valute_id = _v.get('ID')
+        valute = {}
+        valute_cur_name, valute_val = _v.find('Name').text, _v.find(
+            'Value').text
+        valute_charcode = _v.find('CharCode').text
+        valute_val_lst = valute_val.split(',')
+        valute_cur_val = (valute_val_lst[0], valute_val_lst[1])
+        valute[valute_charcode] = (valute_cur_name, valute_cur_val)
+        result.append(valute)
+      self.all_cur = result
+      self.last_call_time = time.time()
+      print("Информация о текущем курсе валют успешно обновлена \n")
 
   def return_currencies(self):
     return self.all_cur
