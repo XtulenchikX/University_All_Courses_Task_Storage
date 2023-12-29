@@ -4,7 +4,7 @@ from currencies_class import Current_currencies
 from new_print import new_print
 
 
-# Демонстрация Singlton
+# Демонстрация Singleton
 obj = Current_currencies()
 obj1 = Current_currencies()
 obj2 = Current_currencies()
