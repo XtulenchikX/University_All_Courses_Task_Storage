@@ -72,3 +72,19 @@ docker compose up
 
 7. Ожидаем конца создания и запуска контейнеров, после чего можем убедиться в получении SSL сертификатов для настроенных и указанных в _docker-compose.yml_ поддоменов (в моем случае это 3 адреса: _magicwho.makstulenchik.ru_, _magicam.makstulenchik.ru_, _magici.makstulenchik.ru_):
 
+- Сертификат для _magicwho.makstulenchik.ru_:  
+![image_who](data/who.png)
+
+- Сертификат для _magicam.makstulenchik.ru_:  
+![image_am](data/am.png)
+
+- Сертификат для _magici.makstulenchik.ru_:  
+![image_i](data/i.png)
+
+---
+
+### Ссылки
+
+- [docker-compose.yml](docker-compose.yml)
+
+- [Скринкаст с демонстрацией развертывания](https://disk.yandex.ru/i/ezMuCvPyc2fZ-Q)
