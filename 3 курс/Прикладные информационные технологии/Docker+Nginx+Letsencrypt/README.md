@@ -67,3 +67,8 @@ nano docker-compose.yml
 ```console
 docker compose up
 ```
+
+![image_6](data/6.png)
+
+7. Ожидаем конца создания и запуска контейнеров, после чего можем убедиться в получении SSL сертификатов для настроенных и указанных в _docker-compose.yml_ поддоменов (в моем случае это 3 адреса: _magicwho.makstulenchik.ru_, _magicam.makstulenchik.ru_, _magici.makstulenchik.ru_):
+
