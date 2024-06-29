@@ -56,3 +56,14 @@ touch docker-compose.yml
 
 После создания файла открываем его и вставляем код из созданного yml файла (мой __*docker-compose.yml*__ представлен в данном репозитории):
 
+```console
+nano docker-compose.yml
+```
+
+![image_5](data/5.png)
+
+6. Сохраняем изменения в файле и запускаем Docker Compose:
+
+```console
+docker compose up
+```
