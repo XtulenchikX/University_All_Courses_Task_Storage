@@ -1,0 +1,71 @@
+version: '3'
+
+services:
+  nginx-proxy:
+    image: nginxproxy/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - proxy-tier
+
+  nginx-proxy-acme:
+    image: nginxproxy/acme-companion
+    container_name: nginx-proxy-acme
+    depends_on:
+      - nginx-proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - acme:/etc/acme.sh
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+    environment:
+      DEFAULT_EMAIL: TulenchikPlay@yandex.ru
+      NGINX_PROXY_CONTAINER: nginx-proxy
+    networks:
+      - proxy-tier
+
+  magicwho:
+    image: containous/whoami
+    container_name: magic-who
+    environment:
+      - VIRTUAL_HOST=magicwho.makstulenchik.ru
+      - LETSENCRYPT_HOST=magicwho.makstulenchik.ru
+      - LETSENCRYPT_EMAIL=TulenchikPlay@yandex.ru
+    networks:
+      - proxy-tier
+
+  magicam:
+    image: containous/whoami
+    container_name: magic-am
+    environment:
+      - VIRTUAL_HOST=magicam.makstulenchik.ru
+      - LETSENCRYPT_HOST=magicam.makstulenchik.ru
+      - LETSENCRYPT_EMAIL=TulenchikPlay@yandex.ru
+    networks:
+      - proxy-tier
+
+  magici:
+    image: containous/whoami
+    container_name: magic-i
+    environment:
+      - VIRTUAL_HOST=magici.makstulenchik.ru
+      - LETSENCRYPT_HOST=magici.makstulenchik.ru
+      - LETSENCRYPT_EMAIL=TulenchikPlay@yandex.ru
+    networks:
+      - proxy-tier
+
+
+volumes:
+  certs:
+  html:
+  acme:
+
+networks:
+  proxy-tier:
+    driver: bridge
