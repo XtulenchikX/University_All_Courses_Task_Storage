@@ -44,4 +44,15 @@ sudo apt-get install docker-compose-plugin
 
 Docker и Docker Compose установлены:
 
+![image_4](data/4.png)
+
+5. Создаем директорию в которой разместим _docker-compose.yml_ (в моем случае это директория _projects_), после чего создаем сам файл:
+
+```console
+mkdir projects
+cd projects
+touch docker-compose.yml
+```
+
+После создания файла открываем его и вставляем код из созданного yml файла (мой __*docker-compose.yml*__ представлен в данном репозитории):
 
