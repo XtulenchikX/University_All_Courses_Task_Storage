@@ -13,4 +13,72 @@
 ## Лабораторная работа 3 | Введение в Django
 
 #### Пример главной страницы и меню
-![Пример главной страницы и меню](imagesForDjango/01_ГлавнаяСтраницаЗаготовкаБоковогоМеню)
+![Пример главной страницы и меню](imagesForDjango/01_ГлавнаяСтраницаЗаготовкаБоковогоМеню.png)
+
+#### Пример детального просмотра поста
+![Пример детального просмотра поста](imagesForDjango/02_ДетальныйПросмотр.png)
+
+#### Пример редактирования поста
+![Пример редактирования поста](imagesForDjango/03_РежимРедактированияПоста.png)
+
+## Лабораторная работа 4 | Применение форм в Django
+
+#### Пример главной страницы для неавторизованного пользователя
+![Пример главной страницы для неавторизованного пользователя](imagesForDjango/04_ГлавнаяСтраницаНезалог.png)
+
+#### 
+![](imagesForDjango/.png)
+
+#### 
+![](imagesForDjango/.png)
+
+#### 
+![](imagesForDjango/.png)
+
+#### 
+![](imagesForDjango/.png)
+
+#### 
+![](imagesForDjango/.png)
+
+#### 
+![](imagesForDjango/.png)
+
+#### 
+![](imagesForDjango/.png)
+
+#### 
+![](imagesForDjango/.png)
+
+#### 
+![](imagesForDjango/.png)
+
+#### 
+![](imagesForDjango/.png)
+
+#### 
+![](imagesForDjango/.png)
+
+#### 
+![](imagesForDjango/.png)
+
+#### 
+![](imagesForDjango/.png)
+
+#### 
+![](imagesForDjango/.png)
+
+#### 
+![](imagesForDjango/.png)
+
+#### 
+![](imagesForDjango/.png)
+
+#### 
+![](imagesForDjango/.png)
+
+#### 
+![](imagesForDjango/.png)
+
+#### 
+![](imagesForDjango/.png)
