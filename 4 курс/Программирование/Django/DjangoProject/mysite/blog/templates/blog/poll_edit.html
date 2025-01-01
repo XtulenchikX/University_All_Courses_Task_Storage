@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h1>Редактировать опрос</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="question">Вопрос:</label>
+    <input type="text" name="question" id="question" class="form-control" value="{{ poll.question }}"><br>
+    <label for="choices">Варианты ответа (по одному на строке):</label>
+    <textarea name="choices" id="choices" class="form-control">{% for choice in poll.choices.all %}{{ choice.text }}
+{% endfor %}</textarea><br>
+    <button type="submit" class="btn btn-outline-primary btn-sm">Сохранить изменения</button>
+</form>
+<a href="{% url 'polls_list' %}" class="btn btn-outline-primary btn-sm mt-3">Назад</a>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="container mt-4" style="max-width: 800px; margin-left: auto; margin-right: auto;">
+    <h1>Опросы</h1>
+    <div class="list-group">
+        {% for poll in polls %}
+        <div class="list-group-item">
+            <div class="d-flex align-items-center">
+                <div class="poll-checkbox {% if user.is_authenticated and user in poll.voted_users.all %}voted{% endif %}"></div>
+                <h5 class="mb-0">{{ poll.question }}</h5>
+            </div>
+            {% if user.is_authenticated %}
+            {% if user in poll.voted_users.all %}
+            <a href="{% url 'poll_results' poll.pk %}" class="btn btn-outline-primary btn-sm btn-vote">Перейти к
+                результатам</a>
+            {% else %}
+            <a href="{% url 'poll_vote' poll.pk %}" class="btn btn-outline-primary btn-sm btn-vote">Проголосовать</a>
+            {% endif %}
+            {% else %}
+            <a href="{% url 'account_login' %}" class="btn btn-primary btn-sm btn-vote">Авторизоваться для
+                голосования</a>
+            {% endif %}
+        </div>
+        {% empty %}
+        <p>Нет доступных опросов.</p>
+        {% endfor %}
+    </div>
+    {% if user.is_superuser %}
+    <a href="{% url 'poll_new' %}" class="btn btn-outline-primary btn-sm mt-3">Создать новый опрос</a>
+    {% endif %}
+</div>
+{% endblock %}

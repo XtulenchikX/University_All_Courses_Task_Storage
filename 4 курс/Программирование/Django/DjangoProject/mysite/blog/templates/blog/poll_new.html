@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="container mt-3">
+    <h1>Создать новый опрос <a href="{% url 'poll_list' %}" class="btn btn-outline-primary mt-3 btn-sm float-end">Отменить
+        создание</a></h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="question">Вопрос:</label>
+        <input type="text" name="question" id="question" class="form-control"><br>
+        <label for="choices">Варианты ответа (по одному на строке):</label>
+        <textarea name="choices" id="choices" class="form-control"></textarea><br>
+        <button type="submit" class="btn btn-outline-primary btn-sm">Создать</button>
+    </form>
+</div>
+
+{% endblock %}

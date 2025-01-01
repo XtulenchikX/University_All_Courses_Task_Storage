@@ -1,0 +1,147 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="container mt-4" style="max-width: 1400px; margin-left: auto; margin-right: auto;">
+    <h1 class="text-center">Статистика опросов</h1>
+    <form id="search-form" class="mb-4">
+        <div class="mb-3">
+            <label class="form-label">Сортировать по</label>
+            <select id="sort-by" class="form-select">
+                <option value="date_desc">От новых к старым</option>
+                <option value="date_asc">От старых к новым</option>
+                <option value="popularity_desc" selected>По убыванию популярности</option>
+                <option value="popularity_asc">По возрастанию популярности</option>
+            </select>
+        </div>
+        <button type="button" class="btn btn-secondary" onclick="searchPolls()">Сортировать</button>
+    </form>
+    <div class="row">
+        <div class="col-md-4">
+            <h2 class="text-center">Опросы</h2>
+            <ul id="polls-list" class="list-group">
+            </ul>
+        </div>
+        <div class="col-md-8">
+            <h2 class="text-center">Результаты</h2>
+            <div id="poll-stats">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function searchPolls() {
+        const sortBy = document.getElementById('sort-by').value;
+        let sortParam = '';
+        let orderParam = '';
+
+        if (sortBy === 'popularity_desc') {
+            sortParam = 'votes';
+            orderParam = 'desc';
+        } else if (sortBy === 'popularity_asc') {
+            sortParam = 'votes';
+            orderParam = 'asc';
+        } else if (sortBy === 'date_desc') {
+            sortParam = 'date';
+            orderParam = 'desc';
+        } else if (sortBy === 'date_asc') {
+            sortParam = 'date';
+            orderParam = 'asc';
+        } else {
+            console.error('Неподдерживаемый параметр сортировки');
+            return;
+        }
+
+        fetch(`http://localhost:8000/poll_analytics/poll-list/?sort_by=${sortParam}&order=${orderParam}`, {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+                "X-CSRFToken": "{{ csrf_token }}"
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            const pollsList = document.getElementById('polls-list');
+            pollsList.innerHTML = '';
+            if (data.length === 0) {
+                const li = document.createElement('li');
+                li.className = 'list-group-item';
+                li.textContent = 'Опросы не найдены';
+                pollsList.appendChild(li);
+            } else {
+                data.forEach(poll => {
+                    const li = document.createElement('li');
+                    li.className = 'list-group-item poll-item';
+                    li.textContent = poll.question;
+                    li.onclick = () => showPollStats(poll.id, li);
+                    pollsList.appendChild(li);
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+            const pollsList = document.getElementById('polls-list');
+            pollsList.innerHTML = '<li class="list-group-item">Ошибка при загрузке опросов</li>';
+        });
+    }
+
+    function showPollStats(pollId, selectedPollItem) {
+        const pollItems = document.querySelectorAll('.poll-item');
+        pollItems.forEach(item => item.classList.remove('active'));
+
+        selectedPollItem.classList.add('active');
+
+        fetch(`http://localhost:8000/poll_analytics/poll-analytics/?poll_id=${pollId}`, {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+                "X-CSRFToken": "{{ csrf_token }}"
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            displayPollTextStats(data);
+            return fetch(`http://localhost:8000/poll_analytics/poll-chart/?poll_id=${pollId}`, {
+                method: "GET",
+                headers: {
+                    "Accept": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}"
+                }
+            });
+        })
+        .then(response => response.json())
+        .then(chartData => {
+            displayPollChart(chartData);
+        })
+        .catch(error => {
+            console.error('Ошибка при загрузке данных:', error);
+            const pollStats = document.getElementById('poll-stats');
+            pollStats.innerHTML = '<p>Ошибка при загрузке данных</p>';
+        });
+    }
+
+    function displayPollTextStats(data) {
+        const pollStats = document.getElementById('poll-stats');
+        const dateTime = data.date_conducted ? data.date_conducted.split('T') : ['Дата не найдена', 'Время не найдено'];
+        pollStats.innerHTML = `
+            <h3 class="text-center">Тема: ${data.question || 'Вопрос не найден'}</h3>
+            <p class="text-center">Дата создания: ${dateTime[0]} | Время создания: ${dateTime[1]}</p>
+        `;
+    }
+
+    function displayPollChart(chartData) {
+        const pollStats = document.getElementById('poll-stats');
+        const img = document.createElement('img');
+        img.src = chartData.chart;
+        img.style.width = '100%';
+        img.style.height = 'auto';
+        img.style.border = '1px solid #ced4da';
+        img.style.borderRadius = '5px';
+        pollStats.appendChild(img);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        searchPolls();
+    });
+</script>
+{% endblock %}

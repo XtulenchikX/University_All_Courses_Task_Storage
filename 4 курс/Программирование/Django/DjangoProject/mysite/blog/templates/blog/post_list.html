@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h3>Посты</h3>
+    <hr style="height:5px;border:none;color:#333;background-color:#333;">
+    {% for post in posts %}
+    <div class="post mb-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>
+                <a href="{% url 'post_detail' pk=post.pk %}" class="text-decoration-none text-dark">{{ post.title }}</a>
+            </h2>
+        </div>
+        <p class="text-muted"><i class="fas fa-calendar-alt"></i> Опубликовано: {{ post.published_date|date:"j F Y | H:i" }}</p>
+        <p class="post-text">{{ post.text|linebreaksbr }}</p>
+        <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-outline-primary btn-sm">Читать полностью</a>
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+
+<style>
+    .post-text {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        -webkit-line-clamp: 6;
+        text-overflow: ellipsis;
+    }
+</style>
+{% endblock %}

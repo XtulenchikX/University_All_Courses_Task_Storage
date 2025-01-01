@@ -1,0 +1,83 @@
+{% extends 'blog/base.html' %}
+{% load i18n %}
+{% load socialaccount %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">{% trans "Вход" %}</h2>
+
+    {% if form.errors %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>{% trans "Ошибка:" %}</strong> {% trans "Пожалуйста, исправьте следующие ошибки в форме:" %}
+        <ul>
+            {% for field in form %}
+            {% for error in field.errors %}
+            <li>{{ error|escape }}</li>
+            {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+            <li>{{ error|escape }}</li>
+            {% endfor %}
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+
+    <button class="btn btn-primary w-100 d-flex justify-content-between align-items-center" type="button"
+            data-bs-toggle="collapse" data-bs-target="#loginForm" aria-expanded="false" aria-controls="loginForm"
+            id="toggleButton">
+        <span class="bi bi-plus-circle" style="visibility: hidden;"></span>
+        <span>{% trans "Авторизоваться по логину" %}</span>
+        <span id="toggleIcon" class="bi bi-plus-circle"></span>
+    </button>
+
+    <div id="loginForm" class="collapse mt-3">
+        <form method="post" action="{% url 'account_login' %}" class="needs-validation" novalidate>
+            {% csrf_token %}
+
+            <div class="form-group mb-3">
+                <label for="id_login" class="form-label">{% trans "Имя пользователя или email" %}</label>
+                <input type="text" name="login" id="id_login" class="form-control" value="{{ form.login.value }}">
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="id_password" class="form-label">{% trans "Пароль" %}</label>
+                <input type="password" name="password" id="id_password" class="form-control"
+                       value="{{ form.password.value }}">
+            </div>
+
+            <div class="form-group mb-3">
+                <div class="form-check">
+                    <input type="checkbox" name="remember" id="id_remember" class="form-check-input" {% if form.remember.value %}checked{% endif %}>
+                    <label class="form-check-label" for="id_remember">{% trans "Запомнить меня" %}</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mt-3">{% trans "Войти" %}</button>
+        </form>
+
+    </div>
+
+    <div class="mt-3">
+        <a href="{% provider_login_url 'google' %}" class="btn btn-danger w-100">{% trans "Войти через Google" %}</a>
+    </div>
+
+</div>
+
+<script>
+    const toggleButton = document.getElementById('toggleButton');
+    const toggleIcon = document.getElementById('toggleIcon');
+
+    toggleButton.addEventListener('click', function() {
+        const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+
+        if (isExpanded) {
+            toggleIcon.classList.remove('bi-plus-circle');
+            toggleIcon.classList.add('bi-dash-circle');
+        } else {
+            toggleIcon.classList.remove('bi-dash-circle');
+            toggleIcon.classList.add('bi-plus-circle');
+        }
+    });
+</script>
+{% endblock %}
