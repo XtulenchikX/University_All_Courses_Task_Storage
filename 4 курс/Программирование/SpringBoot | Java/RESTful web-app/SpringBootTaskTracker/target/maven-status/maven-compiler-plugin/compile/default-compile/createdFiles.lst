@@ -1,0 +1,4 @@
+com/example/taskmanagement/model/Task.class
+com/example/taskmanagement/TaskManagementSystemApplication.class
+com/example/taskmanagement/repository/TaskRepository.class
+com/example/taskmanagement/controller/TaskController.class
