@@ -1,0 +1,158 @@
+{
+  "name": "RabbitMqAppTest",
+  "version": "1",
+  "items": [
+    {
+      "type": "http",
+      "name": "[PublisherController] Публикация сообщения",
+      "seq": 3,
+      "request": {
+        "url": "http://localhost:8080/api/publisher/publish?message=stay alert&routingKey=info",
+        "method": "POST",
+        "headers": [],
+        "params": [
+          {
+            "name": "message",
+            "value": "stay alert",
+            "type": "query",
+            "enabled": true
+          },
+          {
+            "name": "routingKey",
+            "value": "info",
+            "type": "query",
+            "enabled": true
+          }
+        ],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "[ProducerController] Отправка сообщения",
+      "seq": 2,
+      "request": {
+        "url": "http://localhost:8080/api/producer/send?message=Hello, how are you?",
+        "method": "POST",
+        "headers": [],
+        "params": [
+          {
+            "name": "message",
+            "value": "Hello, how are you?",
+            "type": "query",
+            "enabled": true
+          }
+        ],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "[SubscriberWithRouting] Получение с маршрутизацией",
+      "seq": 4,
+      "request": {
+        "url": "http://localhost:8080/api/publisher/publish?message=Error message&routingKey=error",
+        "method": "POST",
+        "headers": [],
+        "params": [
+          {
+            "name": "message",
+            "value": "Error message",
+            "type": "query",
+            "enabled": true
+          },
+          {
+            "name": "routingKey",
+            "value": "error",
+            "type": "query",
+            "enabled": true
+          }
+        ],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "[SubscriberWithRouting] Получение ... Warning",
+      "seq": 5,
+      "request": {
+        "url": "http://localhost:8080/api/publisher/publish?message=Error message&routingKey=warning",
+        "method": "POST",
+        "headers": [],
+        "params": [
+          {
+            "name": "message",
+            "value": "Error message",
+            "type": "query",
+            "enabled": true
+          },
+          {
+            "name": "routingKey",
+            "value": "warning",
+            "type": "query",
+            "enabled": true
+          }
+        ],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "version": "1",
+    "name": "RabbitMqAppTest",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ]
+  }
+}
