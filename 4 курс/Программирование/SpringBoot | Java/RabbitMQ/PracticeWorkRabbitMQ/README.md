@@ -45,4 +45,5 @@
 ![Отправка через Bruno, с routingKey = warning](images/09.png)
 
 > Успешный вывод в консоль
+
 ![Успешный вывод в консоль](images/10.png)
