@@ -44,15 +44,28 @@ _Данное примечание необходимо, чтобы дать о�
 
 ### 1. LibrariesView _(Таб со списком библиотек)_
 
-
+<div style="display: flex; gap: 20px;">
+    <img src="Layouts/LibrariesViewLayout.png" width="250">
+    <img src="Layouts/LibrariesView.png" width="250">
+</div>
 
 ### 2. LibEventsView _(Таб со списком мероприятий)_
 
-
+<div style="display: flex; gap: 20px;">
+    <img src="Layouts/LibEventsViewLayout.png" width="250">
+    <img src="Layouts/LibEventsView.png" width="250">
+</div>
 
 ### 3. LibraryDetailView _(Страница конкретной библиотеки)_
 
-
+<div style="display: flex; gap: 20px;">
+    <img src="Layouts/LibraryDetailViewLayout.png" width="250">
+    <img src="Layouts/LibraryDetailView.png" width="250">
+</div>
 
 ### 4. LibEventDetailView _(Страница конкретного мероприятия)_
 
+<div style="display: flex; gap: 20px;">
+    <img src="Layouts/LibEventDetailViewLayout.png" width="250">
+    <img src="Layouts/LibEventDetailView.png" width="250">
+</div>
