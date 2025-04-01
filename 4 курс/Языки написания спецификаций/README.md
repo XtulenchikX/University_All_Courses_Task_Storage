@@ -22,18 +22,23 @@ _Данное примечание необходимо, чтобы дать о�
 
 ## 1. Use-case diagram
 
-
+![Use-case diagram](UML-diagrams/Use-caseDiagram.png)
 
 ## 2. Classes diagram
 
-
+![Classes diagram](UML-diagrams/ClassesDiagram.png)
 
 ## 3. Sequence diagram (for fullscreen handling)
 
-
+![Sequence diagram](UML-diagrams/SequenceDiagram.png)
 
 ## 4. State diagram
 
-
+![State diagram](UML-diagrams/StateDiagram.png)
 
 ## 5. Activity diagram
+
+![Activity diagram](UML-diagrams/ActivityDiagram.png)
+
+---
+
