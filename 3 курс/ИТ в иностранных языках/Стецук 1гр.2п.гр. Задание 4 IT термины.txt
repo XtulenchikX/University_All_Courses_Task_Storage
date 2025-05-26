@@ -1,0 +1,20 @@
+Reliability Engineering : Контроль надежности
+Augmented Reality: Расширенная реальность
+Load Balancing: Балансировка нагрузки
+Inversion of Control: Инверсия управления
+Finite State Machine: Конечный автомат
+Neural Network: Нейронная сеть
+Data Mining: Анализ данных
+Cross-Origin Resource Sharing (CORS): Обмен ресурсами между разными источниками (CORS)
+Zero-Day Exploit: Эксплойт нулевого дня
+Denial of Service (DoS): Отказ в обслуживании (DoS)
+Load Shedding: Разгрузка нагрузки
+Hyperparameter Tuning: Тонкая настройка гиперпараметров
+Fuzzy Logic: Нечеткая логика
+Byzantine Fault Tolerance: Византийская устойчивость к сбоям
+Neural Style Transfer: Перенос стиля с использованием нейронных сетей
+Homogeneous Coordinates: Однородные координаты
+Bloom Filter: Фильтр Блума
+Homomorphic Signature: Гомоморфная подпись
+Dark Web: Темная сеть
+Temporal Logic: Временная логика
